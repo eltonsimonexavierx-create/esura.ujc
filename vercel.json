@@ -3,15 +3,16 @@
   "installCommand": "bash build.sh",
   "builds": [
     {
-      "src": "projeto_esura/wsgi.py",
+      "src": "setup/wsgi.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "projeto_esura/wsgi.py"
+      "dest": "setup/wsgi.py"
     }
   ]
 }
+
 
