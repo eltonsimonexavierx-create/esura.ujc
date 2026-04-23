@@ -1,0 +1,51 @@
+{% extends 'portal/base.html' %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div class="p-6 border-b border-gray-100">
+            <h2 class="text-xl font-bold text-[#00204a]">Lançamento de Notas</h2>
+            <p class="text-sm text-gray-500">Selecione o estudante e a disciplina para registar a avaliação.</p>
+        </div>
+
+        <form method="POST" class="p-6 space-y-5">
+            {% csrf_token %}
+            
+            <div>
+                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Estudante</label>
+                <select name="estudante" required class="w-full p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Selecione o estudante...</option>
+                    {% for e in estudantes %}
+                        <option value="{{ e.id }}">{{ e.username }} - {{ e.get_full_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Disciplina</label>
+                <select name="disciplina" required class="w-full p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Selecione a disciplina...</option>
+                    {% for d in disciplinas %}
+                        <option value="{{ d.id }}">{{ d.nome }} ({{ d.codigo }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Nota Final (0-20)</label>
+                <input type="number" name="valor" step="0.1" min="0" max="20" required
+                    class="w-full p-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Ex: 14.5">
+            </div>
+
+            <div class="pt-4 flex items-center justify-end gap-3">
+                <a href="{% url 'dashboard' %}" class="text-sm text-gray-500 hover:text-gray-700">Cancelar</a>
+                <button type="submit" 
+                    class="bg-[#00204a] text-white px-10 py-3 rounded-lg font-bold hover:bg-blue-900 transition">
+                    PUBLICAR NOTA
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

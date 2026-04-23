@@ -1,0 +1,51 @@
+{% extends 'portal/base.html' %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+        <div class="p-6 border-b border-gray-100">
+            <h2 class="text-xl font-bold text-[#00204a]">Registar Novo Estudante</h2>
+            <p class="text-sm text-gray-500">Preencha os dados abaixo para criar uma conta de acesso ao estudante.</p>
+        </div>
+
+        <form method="POST" class="p-6 space-y-4">
+            {% csrf_token %}
+            
+            {% if erro %}
+            <div class="p-3 bg-red-100 border border-red-200 text-red-700 rounded-lg text-sm">
+                {{ erro }}
+            </div>
+            {% endif %}
+
+            <div>
+                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Código de Utilizador / ID</label>
+                <input type="text" name="username" required
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                    placeholder="Ex: 20240001">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Email Institucional</label>
+                <input type="email" name="email" required
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                    placeholder="estudante@ujc.ac.mz">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Senha Temporária</label>
+                <input type="password" name="password" required
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                    placeholder="••••••••">
+            </div>
+
+            <div class="pt-4 flex items-center justify-end gap-3">
+                <a href="{% url 'dashboard' %}" class="text-sm text-gray-500 hover:text-gray-700">Cancelar</a>
+                <button type="submit" 
+                    class="bg-[#00204a] text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-900 transition shadow-lg shadow-blue-900/20">
+                    CADASTRAR ESTUDANTE
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

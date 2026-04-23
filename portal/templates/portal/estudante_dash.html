@@ -1,0 +1,41 @@
+{% extends 'portal/base.html' %}
+{% block content %}
+<div class="mb-8">
+    <h2 class="text-2xl font-bold text-gray-800">Meu Histórico</h2>
+    <p class="text-sm text-gray-500">Consulte aqui as suas avaliações e notas finais.</p>
+</div>
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+    <table class="w-full text-left">
+        <thead class="bg-gray-50 border-b border-gray-100">
+            <tr>
+                <th class="p-4 text-[11px] font-bold text-gray-400 uppercase">Disciplina</th>
+                <th class="p-4 text-[11px] font-bold text-gray-400 uppercase">Nota Final</th>
+                <th class="p-4 text-[11px] font-bold text-gray-400 uppercase text-right">Data de Lançamento</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+            {% for n in notas %}
+            <tr class="hover:bg-gray-50 transition">
+                <td class="p-4">
+                    <p class="font-bold text-gray-800 text-sm">{{ n.disciplina.nome }}</p>
+                    <p class="text-[10px] text-gray-400 font-mono">{{ n.disciplina.codigo }}</p>
+                </td>
+                <td class="p-4">
+                    <span class="text-lg font-black {% if n.valor >= 10 %}text-blue-600{% else %}text-red-500{% endif %}">
+                        {{ n.valor }}
+                    </span>
+                </td>
+                <td class="p-4 text-right text-xs text-gray-400">{{ n.data_lancamento|date:"d/m/Y H:i" }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3" class="p-12 text-center text-gray-400 italic">Nenhuma nota registada até ao momento.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+

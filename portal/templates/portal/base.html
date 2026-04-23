@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>ESURA - UJC</title>
+    <script src="https://tailwindcss.com"></script>
+    <style>
+        .sidebar-bg { background-color: #00204a; }
+        .nav-item:hover { background-color: rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="bg-[#f4f7fa] flex h-screen font-sans">
+    <!-- Sidebar Oficial ESURA -->
+    <aside class="sidebar-bg w-72 text-white flex flex-col shadow-2xl">
+        <div class="p-8 border-b border-blue-900/50 flex flex-col items-center">
+            <!-- Logotipo da UJC -->
+            <img src="https://ujc.ac.mz" alt="Logo UJC" class="w-16 mb-4 brightness-0 invert">
+            <div class="text-center">
+                <h1 class="font-bold text-lg tracking-widest">ESURA</h1>
+                <p class="text-[10px] text-blue-300 uppercase font-medium">Universidade Joaquim Chissano</p>
+            </div>
+        </div>
+        <nav class="flex-1 px-4 py-6 space-y-1">
+            <a href="{% url 'dashboard' %}" class="nav-item flex items-center p-3 rounded-lg transition text-sm">Dashboard</a>
+            
+            {% if perfil.tipo == 'ADMIN' %}
+                <a href="{% url 'cadastrar_estudante' %}" class="nav-item flex items-center p-3 rounded-lg transition text-sm">Registar Estudante</a>
+            {% endif %}
+
+            {% if perfil.tipo == 'PROF' %}
+                <a href="{% url 'lancar_nota' %}" class="nav-item flex items-center p-3 rounded-lg transition text-sm">Lançar Notas</a>
+            {% endif %}
+
+            <div class="pt-10">
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="w-full text-left p-3 text-red-400 text-sm hover:bg-red-900/20 rounded-lg">Sair do Sistema</button>
+                </form>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col overflow-hidden">
+        <header class="h-16 bg-white border-b flex items-center justify-between px-8 shadow-sm">
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <h1 class="text-xs font-bold text-gray-400 uppercase tracking-widest">Portal {{ perfil.tipo }}</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="text-right">
+                    <p class="text-sm font-bold text-gray-800 leading-none">{{ request.user.username }}</p>
+                    <p class="text-[10px] text-gray-500 uppercase mt-1">Conectado</p>
+                </div>
+                <div class="w-10 h-10 rounded-full bg-gray-200 border-2 border-white shadow-sm flex items-center justify-center font-bold text-blue-900">
+                    {{ request.user.username|slice:":1"|upper }}
+                </div>
+            </div>
+        </header>
+        <section class="flex-1 overflow-y-auto p-8">
+            {% block content %}{% endblock %}
+        </section>
+    </main>
+</body>
+</html>
+
