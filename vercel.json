@@ -1,4 +1,6 @@
 {
+  "version": 2,
+  "installCommand": "bash build.sh",
   "builds": [
     {
       "src": "projeto_esura/wsgi.py",
