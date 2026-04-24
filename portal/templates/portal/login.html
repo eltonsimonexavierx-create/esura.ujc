@@ -119,10 +119,11 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="input-group">
-    <label>Senha <b style="color: red; font-weight: bold;">*</b></label>
-    <input type="password" name="password" placeholder="Digite sua senha" required>
-</div>
-
+    <label style="display: flex; align-items: center; font-size: 11px; color: #777; margin-bottom: 4px; margin-left: 8px;">
+        Senha <span style="color: red; margin-left: 3px;">*</span>
+    </label>
+    <div style="position: relative;">
+        <input type="password" name="password" placeholder="Digite sua senha" required>
     </div>
 </div>
 
