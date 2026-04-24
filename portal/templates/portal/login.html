@@ -4,69 +4,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo ao ESURA - UJC</title>
+    <title>Login - ESURA UJC</title>
     <script src="https://tailwindcss.com"></script>
     <style>
-        body { background-color: #f0f2f5; }
-        .login-card { border-radius: 2.5rem; overflow: hidden; }
-        .btn-entrar {
-            border: 2px solid #3b82f6;
-            color: #3b82f6;
-            transition: all 0.3s;
-        }
+        body { background-color: #f8f9fa; }
+        .login-card { border-radius: 1.5rem; overflow: hidden; }
+        .input-field { border: 1px solid #d1d5db; transition: all 0.3s; }
+        .input-field:focus { border-color: #3b82f6; box-shadow: 0 0 0 1px #3b82f6; }
+        .btn-entrar { border: 1px solid #3b82f6; color: #3b82f6; transition: all 0.3s; }
         .btn-entrar:hover { background-color: #eff6ff; }
     </style>
 </head>
 <body class="h-screen flex items-center justify-center p-4">
-    <div class="bg-white w-full max-w-5xl h-[620px] shadow-2xl flex login-card">
+
+    <!-- Contentor Principal (Card) -->
+    <div class="bg-white w-full max-w-5xl h-[580px] shadow-sm flex login-card border border-gray-100">
         
-        <!-- Lado Esquerdo: Banner -->
-        <div class="hidden md:block w-1/2 p-4">
-            <div class="w-full h-full rounded-3xl bg-gray-200 bg-cover bg-center" 
+        <!-- LADO ESQUERDO: Banner com Imagem de Fundo -->
+        <div class="hidden md:block w-1/2 p-0">
+            <div class="w-full h-full bg-cover bg-center" 
                  style="background-image: url('https://ujc.ac.mz');">
+                 <!-- Overlay opcional para escurecer a imagem se desejar -->
+                 <div class="w-full h-full bg-black/10"></div>
             </div>
         </div>
 
-        <!-- Lado Direito: Login -->
-        <div class="w-full md:w-1/2 flex flex-col items-center justify-center px-12 relative">
+        <!-- LADO DIREITO: Formulário de Login -->
+        <div class="w-full md:w-1/2 flex flex-col items-center justify-center px-16 relative">
             
-    <<!-- LOGO FORÇADO NO TOPO -->
-<div style="text-align: center; width: 100%; margin-top: 80px; margin-bottom: 100px;">
-    <img src="{% static 'imagens/UJC.png' %}" 
-         alt="UJC" 
-         style="width: 100px !important; height: auto; display: inline-block; visibility: visible !important;">
-</div>
-               
+            <!-- LOGOTIPO -->
+            <div class="mb-4">
+                <img src="{% static 'imagens/UJC.png' %}" alt="Logo UJC" class="w-24 h-auto">
+            </div>
+
+            <!-- TEXTO DE BOAS-VINDAS -->
             <div class="text-center mb-8">
-                <h1 class="text-xl font-bold text-gray-200">Bem-vindo ao ESURA</h1>
-                <p class="text-[50px] text-gray-600 font-black uppercase tracking-[0.2em] mt-1">Universidade Joaquim Chissano</p>
+                <h1 class="text-sm font-bold text-gray-800">Bem-vindo ao ESURA</h1>
             </div>
 
-            <form method="post" class="w-full max-w-sm space-y-5">
+            <!-- FORMULÁRIO -->
+            <form method="post" class="w-full space-y-4">
                 {% csrf_token %}
-                <div>
-                    <label class="block text-[11px] font-bold text-gray-500 mb-1 ml-1 uppercase">Utilizador/Email</label>
-                    <input type="text" name="username" placeholder="Digite o Utilizador/Email" required
-                        class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-400 focus:bg-white outline-none transition-all text-sm">
-                </div>
                 
                 <div>
-                    <label class="block text-[11px] font-bold text-gray-500 mb-1 ml-1 uppercase">Senha *</label>
-                    <input type="password" name="password" placeholder="Digite sua senha" required
-                        class="w-full px-5 py-3 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-400 focus:bg-white outline-none transition-all text-sm">
+                    <label class="block text-[11px] text-gray-500 mb-1 ml-1">Utilizador/Email</label>
+                    <input type="text" name="username" placeholder="Digite o Utilizador/Email" required 
+                           class="w-full px-4 py-2.5 bg-white input-field rounded-lg outline-none text-xs">
                 </div>
 
-                <button type="submit" class="w-full btn-entrar font-bold py-3.5 rounded-2xl flex items-center justify-center gap-3 mt-4">
-                    <span class="text-xl">➔</span> Entrar
+                <div>
+                    <label class="block text-[11px] text-gray-500 mb-1 ml-1">Senha *</label>
+                    <input type="password" name="password" placeholder="Digite sua senha" required 
+                           class="w-full px-4 py-2.5 bg-white input-field rounded-lg outline-none text-xs">
+                </div>
+
+                <!-- ESQUECEU A SENHA -->
+                <div class="text-left">
+                    <a href="#" class="text-[10px] text-blue-500 hover:underline">Esqueceu a senha?</a>
+                </div>
+
+                <!-- BOTÃO ENTRAR -->
+                <button type="submit" class="w-full btn-entrar font-medium py-2.5 rounded-lg flex items-center justify-center gap-2 text-xs mt-2">
+                    <span>➔</span> Entrar
                 </button>
-                
             </form>
-            
-            <div class="absolute bottom-8">
-                <p class="text-[9px] text-gray-300 font-mono italic">v2026.04.23-UJC-ESURA</p>
+
+            <!-- RODAPÉ / VERSÃO -->
+            <div class="absolute bottom-6">
+                <p class="text-[9px] text-gray-400 font-mono">v2026.03.12-30431ca</p>
             </div>
+
         </div>
     </div>
+
 </body>
 </html>
-
