@@ -5,66 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - ESURA UJC</title>
-    <style>
-        * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background-color: white; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
-        
-        .container { width: 230px; display: flex; flex-direction: column; align-items: center; }
-        .login-card { border: 1px solid #ededed; border-radius: 35px; padding: 25px 15px; width: 100%; text-align: center; }
-        
-        .logo { width: 75px; margin-bottom: 12px; }
-        .welcome-text { font-size: 13px; font-weight: 700; color: #1a1a1a; line-height: 1.1; }
-        .sub-text { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 20px; }
-
-        form { width: 100%; text-align: left; }
-        .input-group { margin-bottom: 10px; position: relative; } 
-        
-        label { display: block; font-size: 11px; color: #777; margin-bottom: 4px; margin-left: 8px; }
-
-        /* O segredo para não estragar a organização */
-        .asterisco { color: red; position: absolute; font-weight: bold; margin-left: 2px; }
-        
-        input { width: 100%; padding: 7px 15px; border: 1px solid #ddd; border-radius: 30px; font-size: 11px; outline: none; color: #555; }
-        .forgot-password { display: block; font-size: 10px; color: #3b82f6; text-decoration: none; margin: 8px 0 15px 8px; }
-
-        .btn-entrar { 
-            width: 100%; padding: 7px; border: 1px solid #3b82f6; background: white; 
-            color: #3b82f6; border-radius: 30px; font-weight: 600; cursor: pointer; 
-            display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 12px; 
-        }
-
-        .version { margin-top: 30px; font-size: 9px; color: #bbb; font-family: monospace; }
-    </style>
 </head>
-<body>
-    <div class="container">
-        <div class="login-card">
-            <img src="{% static 'imagens/UJC.png' %}" alt="Logo UJC" class="logo">
-            <div class="welcome-text">Bem-vindo ao</div>
-            <div class="sub-text">ESURA</div>
+<body style="background-color: white; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: 'Segoe UI', Arial, sans-serif;">
 
-            <form method="post">
-                {% csrf_token %}
-                <div class="input-group">
-                    <label>Utilizador/Email</label>
-                    <input type="text" name="username" placeholder="Digite o Utilizador" required>
-                </div>
+    <!-- CONTAINER ULTRA-FINO (230px fixos) -->
+    <div style="width: 230px; display: flex; flex-direction: column; align-items: center; border: 1px solid #ededed; border-radius: 35px; padding: 25px 15px; text-align: center;">
+        
+        <!-- LOGOTIPO -->
+        <img src="{% static 'imagens/UJC.png' %}" alt="Logo UJC" style="width: 75px; margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;">
 
-                <div class="input-group">
-                    <!-- Asterisco adicionado como pediste -->
-                    <label>Senha <span class="asterisco">*</span></label>
-                    <input type="password" name="password" placeholder="Digite sua senha" required>
-                </div>
+        <!-- TEXTOS -->
+        <div style="font-size: 13px; font-weight: 700; color: #1a1a1a; line-height: 1.1; margin-bottom: 2px;">Bem-vindo ao</div>
+        <div style="font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 20px;">ESURA</div>
 
-                <a href="#" class="forgot-password">Esqueceu a senha?</a>
+        <!-- FORMULÁRIO -->
+        <form method="post" style="width: 100%; text-align: left;">
+            {% csrf_token %}
+            <div style="margin-bottom: 10px;">
+                <label style="display: block; font-size: 11px; color: #777; margin-bottom: 4px; margin-left: 8px;">Utilizador/Email</label>
+                <input type="text" name="username" placeholder="Digite o Utilizador" required 
+                       style="width: 100%; padding: 7px 15px; border: 1px solid #ddd; border-radius: 30px; font-size: 11px; outline: none; box-sizing: border-box;">
+            </div>
 
-                <button type="submit" class="btn-entrar">
-                    <span>➔</span> Entrar
-                </button>
-            </form>
+            <div style="margin-bottom: 10px; position: relative;">
+                <label style="display: block; font-size: 11px; color: #777; margin-bottom: 4px; margin-left: 8px;">
+                    Senha <span style="color: red; font-weight: bold;">*</span>
+                </label>
+                <input type="password" name="password" placeholder="Digite sua senha" required 
+                       style="width: 100%; padding: 7px 15px; border: 1px solid #ddd; border-radius: 30px; font-size: 11px; outline: none; box-sizing: border-box;">
+            </div>
 
-            <div class="version">v 2026.03.12-30431ca</div>
-        </div>
+            <a href="#" style="display: block; font-size: 10px; color: #3b82f6; text-decoration: none; margin: 8px 0 15px 8px;">Esqueceu a senha?</a>
+
+            <button type="submit" style="width: 100%; padding: 7px; border: 1px solid #3b82f6; background: white; color: #3b82f6; border-radius: 30px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 12px;">
+                ➔ Entrar
+            </button>
+        </form>
+
+        <div style="margin-top: 30px; font-size: 9px; color: #bbb; font-family: monospace;">v 2026.03.12-30431ca</div>
     </div>
+
 </body>
 </html>
