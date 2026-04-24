@@ -119,9 +119,11 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="input-group">
-                    <label>Utilizador/Email</label>
-                    <input type="text" name="username" placeholder="Digite o Utilizador" required>
-                </div>
+    <label>Senha <span style="color: red; font-weight: bold;">*</span></label>
+    <div style="position: relative;">
+        <input type="password" name="password" placeholder="Digite sua senha" required>
+    </div>
+</div>
 
                 <div class="input-group">
                     <label>Senha *</label>
