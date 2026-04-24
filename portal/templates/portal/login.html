@@ -3,60 +3,153 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Esta linha garante que o telemóvel não desestruture o site -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Login - ESURA UJC</title>
-</head>
-<body style="margin: 0; padding: 0; background-color: #ffffff; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: Arial, sans-serif;">
-
-    <!-- CARD PRINCIPAL: Ajustado para ser ULTRA-FINO e ALTO como na foto -->
-    <div style="width: 260px; border: 1px solid #e5e7eb; border-radius: 30px; padding: 40px 20px; text-align: center; box-sizing: border-box;">
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         
-        <!-- LOGOTIPO: Caminho exato que o seu Git confirmou -->
-        <img src="{% static 'imagens/UJC.png' %}" alt="Logo UJC" style="width: 140px; height: auto; margin-bottom: 15px; display: inline-block;">
+        body { 
+            background-color: #ffffff; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            padding: 20px; /* Espaço para não colar nos cantos do telemóvel */
+        }
+        
+        /* CARD ULTRA-FINO (IGUAL À FOTO) */
+        .login-card {
+            width: 100%;
+            max-width: 280px; /* Largura fina ideal para ecrãs de telemóvel */
+            border: 1px solid #e2e8f0;
+            border-radius: 35px;
+            padding: 35px 25px;
+            text-align: center;
+            background: white;
+        }
 
-        <!-- TEXTO DE BOAS-VINDAS: Dividido em duas linhas como na imagem -->
-        <div style="font-size: 17px; font-weight: bold; color: #1f2937; margin-bottom: 30px; line-height: 1.2;">
+        .logo { 
+            width: 130px; 
+            height: auto; 
+            margin-bottom: 15px; 
+        }
+        
+        .welcome-text { 
+            font-size: 16px; 
+            font-weight: 700; 
+            color: #1f2937; 
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        form { width: 100%; text-align: left; }
+        
+        .input-group { 
+            margin-bottom: 15px; 
+            position: relative; 
+        } 
+        
+        label { 
+            display: block; 
+            font-size: 13px; 
+            color: #4b5563; 
+            margin-bottom: 8px; 
+            margin-left: 12px;
+        }
+
+        .required-mark {
+            color: #ef4444;
+            font-weight: bold;
+            position: absolute;
+            margin-left: 3px;
+        }
+        
+        /* INPUTS OVAIS (IGUAL À FOTO) */
+        input { 
+            width: 100%; 
+            padding: 12px 20px; 
+            border: 1px solid #d1d5db; 
+            border-radius: 50px; 
+            font-size: 14px; 
+            outline: none; 
+            color: #374151;
+            -webkit-appearance: none; /* Remove sombras estranhas no iPhone */
+        }
+
+        .forgot-password { 
+            display: block; 
+            font-size: 12px; 
+            color: #3b82f6; 
+            text-decoration: none; 
+            margin: 15px 0 25px 12px; 
+        }
+
+        /* BOTÃO AZUL CONTORNADO (IGUAL À FOTO) */
+        .btn-entrar { 
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #3b82f6; 
+            background: white; 
+            color: #3b82f6; 
+            border-radius: 50px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-entrar:active { background-color: #eff6ff; }
+
+        .version { 
+            margin-top: 40px; 
+            font-size: 11px; 
+            color: #9ca3af; 
+            font-family: monospace; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <!-- LOGOTIPO -->
+        <img src="{% static 'imagens/UJC.png' %}" alt="Logo UJC" class="logo">
+
+        <!-- TEXTOS -->
+        <div class="welcome-text">
             Bem-vindo ao<br>ESURA
         </div>
 
         <!-- FORMULÁRIO -->
-        <form method="post" style="width: 100%; margin: 0; padding: 0;">
+        <form method="post">
             {% csrf_token %}
             
-            <!-- CAMPO UTILIZADOR -->
-            <div style="margin-bottom: 15px; text-align: left;">
-                <label style="display: block; font-size: 13px; color: #6b7280; margin-bottom: 8px; margin-left: 12px;">Utilizador/Email</label>
-                <input type="text" name="username" placeholder="Digite o Utilizador" required 
-                       style="width: 100%; padding: 12px 20px; border: 1px solid #d1d5db; border-radius: 50px; font-size: 13px; outline: none; box-sizing: border-box;">
+            <div class="input-group">
+                <label>Utilizador/Email</label>
+                <input type="text" name="username" placeholder="Digite o Utilizador" required>
             </div>
 
-            <!-- CAMPO SENHA -->
-            <div style="margin-bottom: 10px; text-align: left; position: relative;">
-                <label style="display: block; font-size: 13px; color: #6b7280; margin-bottom: 8px; margin-left: 12px;">
-                    Senha <span style="color: red; font-weight: bold;">*</span>
-                </label>
+            <div class="input-group">
+                <label>Senha <span class="required-mark">*</span></label>
                 <div style="position: relative;">
-                    <input type="password" name="password" placeholder="Digite sua senha" required 
-                           style="width: 100%; padding: 12px 20px; border: 1px solid #d1d5db; border-radius: 50px; font-size: 13px; outline: none; box-sizing: border-box;">
-                    <span style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 14px; cursor: pointer;">👁️</span>
+                    <input type="password" name="password" placeholder="Digite sua senha" required>
+                    <span style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 16px;">👁️</span>
                 </div>
             </div>
 
-            <!-- ESQUECEU A SENHA -->
-            <div style="text-align: left; margin-bottom: 25px; margin-left: 12px;">
-                <a href="#" style="font-size: 12px; color: #3b82f6; text-decoration: none;">Esqueceu a senha?</a>
-            </div>
+            <a href="#" class="forgot-password">Esqueceu a senha?</a>
 
-            <!-- BOTÃO ENTRAR: Oval com contorno azul -->
-            <button type="submit" style="width: 100%; padding: 12px; border: 1px solid #3b82f6; background: white; color: #3b82f6; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                <span style="font-size: 16px;">➔</span> Entrar
+            <button type="submit" class="btn-entrar">
+                <span>➔</span> Entrar
             </button>
         </form>
 
-        <!-- RODAPÉ DA VERSÃO -->
-        <div style="margin-top: 50px; font-size: 11px; color: #9ca3af; font-family: monospace;">
-            v 2026.03.12-30431ca
-        </div>
+        <div class="version">v 2026.03.12-30431ca</div>
     </div>
 
 </body>
