@@ -7,65 +7,123 @@
     <title>Login - ESURA UJC</title>
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f0f2f5; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        body { 
+            background-color: white; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            padding: 20px;
+        }
         
         .container { 
-            background: white; width: 900px; height: 550px; 
-            display: flex; border-radius: 20px; overflow: hidden; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            background: white; 
+            width: 100%; 
+            max-width: 400px; /* Largura ideal para telemóveis */
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            text-align: center;
         }
 
-        /* Lado Esquerdo */
-        .banner { 
-            width: 50%; background-image: url('https://ujc.ac.mz'); 
-            background-size: cover; background-position: center; 
+        /* Estilo do Card (Borda suave da imagem) */
+        .login-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 30px;
+            padding: 40px 30px;
+            width: 100%;
         }
 
-        /* Lado Direito */
-        .login-section { 
-            width: 50%; padding: 40px; display: flex; flex-direction: column; 
-            align-items: center; justify-content: center; position: relative;
+        .logo { width: 120px; margin-bottom: 20px; }
+        
+        .welcome-text { 
+            font-size: 18px; 
+            font-weight: 700; 
+            color: #1f2937; 
+            margin-bottom: 5px; 
+        }
+        
+        .sub-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 30px;
         }
 
-        .logo { width: 85px; margin-bottom: 10px; }
-        .welcome-text { font-size: 15px; font-weight: 700; color: #333; margin-bottom: 25px; }
-
-        form { width: 100%; max-width: 280px; }
-        .input-group { margin-bottom: 15px; }
-        label { display: block; font-size: 11px; color: #888; margin-bottom: 5px; font-weight: 600; }
+        form { width: 100%; text-align: left; }
+        
+        .input-group { margin-bottom: 20px; }
+        
+        label { 
+            display: block; 
+            font-size: 14px; 
+            color: #4b5563; 
+            margin-bottom: 8px; 
+            margin-left: 5px;
+        }
         
         input { 
-            width: 100%; padding: 10px 15px; border: 1px solid #ddd; 
-            border-radius: 10px; font-size: 13px; outline: none; transition: 0.3s;
+            width: 100%; 
+            padding: 12px 20px; 
+            border: 1px solid #d1d5db; 
+            border-radius: 25px; 
+            font-size: 14px; 
+            outline: none; 
+            color: #6b7280;
         }
-        input:focus { border-color: #3b82f6; }
 
         .forgot-password { 
-            display: block; font-size: 10px; color: #3b82f6; 
-            text-decoration: none; margin-bottom: 20px; margin-top: 5px;
+            display: block; 
+            font-size: 13px; 
+            color: #3b82f6; 
+            text-decoration: none; 
+            margin-bottom: 25px; 
+            margin-top: 10px;
         }
 
         .btn-entrar { 
-            width: 100%; padding: 12px; border: 1px solid #3b82f6; 
-            background: transparent; color: #3b82f6; border-radius: 10px; 
-            font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 13px;
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #3b82f6; 
+            background: white; 
+            color: #3b82f6; 
+            border-radius: 25px; 
+            font-weight: 600; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px;
+            font-size: 15px;
         }
-        .btn-entrar:hover { background: #f0f7ff; }
 
-        .version { position: absolute; bottom: 20px; font-size: 9px; color: #ccc; font-family: monospace; }
+        .version { 
+            margin-top: 40px; 
+            font-size: 12px; 
+            color: #9ca3af; 
+            font-family: monospace; 
+        }
+
+        /* Esconder banner em tablets e telemóveis */
+        @media (max-width: 768px) {
+            body { background-color: white; }
+            .login-card { border: 1px solid #eee; box-shadow: none; }
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Lado Esquerdo -->
-        <div class="banner"></div>
-
-        <!-- Lado Direito -->
-        <div class="login-section">
+        <div class="login-card">
+            <!-- LOGOTIPO -->
             <img src="{% static 'imagens/UJC.png' %}" alt="Logo UJC" class="logo">
-            <div class="welcome-text">Bem-vindo ao ESURA</div>
 
+            <!-- TEXTOS -->
+            <div class="welcome-text">Bem-vindo ao</div>
+            <div class="sub-text">ESURA</div>
+
+            <!-- FORMULÁRIO -->
             <form method="post">
                 {% csrf_token %}
                 <div class="input-group">
@@ -75,18 +133,24 @@
 
                 <div class="input-group">
                     <label>Senha *</label>
-                    <input type="password" name="password" placeholder="Digite sua senha" required>
+                    <div style="position: relative;">
+                        <input type="password" name="password" placeholder="Digite sua senha" required>
+                        <span style="position: absolute; right: 15px; top: 12px; color: #999;">👁️</span>
+                    </div>
                 </div>
 
                 <a href="#" class="forgot-password">Esqueceu a senha?</a>
 
-                <button type="submit" class="btn-entrar">➔ Entrar</button>
+                <button type="submit" class="btn-entrar">
+                    <span>➔</span> Entrar
+                </button>
             </form>
 
-            <div class="version">v2026.03.12-30431ca</div>
+            <div class="version">v 2026.03.12-30431ca</div>
         </div>
     </div>
 
 </body>
 </html>
+
 
