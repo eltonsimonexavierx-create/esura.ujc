@@ -75,7 +75,14 @@ USE_TZ = True
 # Configurações de Ficheiros Estáticos (CSS, JS, Imagens)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# Esta linha é o "segredo" para a Vercel mostrar as imagens
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # --- PONTO 3: CONFIGURAÇÕES DE ACESSO E REDIRECIONAMENTO ---
 # Quando alguém tenta entrar no site sem estar logado, vai para aqui:
