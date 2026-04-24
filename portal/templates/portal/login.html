@@ -14,90 +14,89 @@
             justify-content: center; 
             min-height: 100vh; 
             margin: 0; 
-            padding: 10px;
         }
         
         .container { 
             width: 100%; 
-            max-width: 350px; /* Reduzido de 400px para 350px */
+            max-width: 290px; /* Tornou-se muito mais fino */
             display: flex; 
             flex-direction: column;
             align-items: center; 
-            text-align: center;
         }
 
         .login-card {
-            border: 1px solid #e5e7eb;
-            border-radius: 25px;
-            padding: 25px 20px; /* Reduzi o espaço interno (padding) */
+            border: 1px solid #ededed;
+            border-radius: 20px;
+            padding: 20px 15px; /* Espaços internos mínimos */
             width: 100%;
+            text-align: center;
         }
 
-        .logo { width: 100px; margin-bottom: 10px; } /* Logo um pouco menor */
+        .logo { width: 85px; margin-bottom: 8px; } /* Logo reduzido */
         
         .welcome-text { 
-            font-size: 16px; 
+            font-size: 14px; 
             font-weight: 700; 
             color: #1f2937; 
             margin-bottom: 2px; 
         }
         
         .sub-text {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
             color: #1f2937;
-            margin-bottom: 20px; /* Espaço reduzido abaixo do título */
+            margin-bottom: 15px; 
         }
 
         form { width: 100%; text-align: left; }
         
-        .input-group { margin-bottom: 12px; } /* Reduzi o espaço entre campos */
+        .input-group { margin-bottom: 10px; } 
         
         label { 
             display: block; 
-            font-size: 13px; 
-            color: #4b5563; 
-            margin-bottom: 4px; 
-            margin-left: 10px;
+            font-size: 12px; 
+            color: #6b7280; 
+            margin-bottom: 3px; 
+            margin-left: 8px;
         }
         
         input { 
             width: 100%; 
-            padding: 10px 18px; /* Input mais fino */
+            padding: 8px 15px; /* Inputs mais estreitos */
             border: 1px solid #d1d5db; 
-            border-radius: 25px; 
-            font-size: 13px; 
+            border-radius: 20px; 
+            font-size: 12px; 
             outline: none; 
         }
 
         .forgot-password { 
             display: block; 
-            font-size: 12px; 
+            font-size: 11px; 
             color: #3b82f6; 
             text-decoration: none; 
-            margin: 10px 0 15px 10px; /* Comprimido */
+            margin: 8px 0 12px 8px; 
         }
 
         .btn-entrar { 
             width: 100%; 
-            padding: 10px; 
+            padding: 8px; 
             border: 1px solid #3b82f6; 
             background: white; 
             color: #3b82f6; 
-            border-radius: 25px; 
+            border-radius: 20px; 
             font-weight: 600; 
             cursor: pointer; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            gap: 8px;
-            font-size: 14px;
+            gap: 6px;
+            font-size: 13px;
         }
 
         .version { 
-            margin-top: 25px; /* Menos espaço no rodapé */
-            font-size: 11px; 
-            color: #9ca3af; 
+            margin-top: 20px; 
+            font-size: 10px; 
+            color: #aaa; 
             font-family: monospace; 
         }
     </style>
@@ -125,7 +124,6 @@
                     <label>Senha *</label>
                     <div style="position: relative;">
                         <input type="password" name="password" placeholder="Digite sua senha" required>
-                        <span style="position: absolute; right: 15px; top: 10px; color: #999; font-size: 12px;">👁️</span>
                     </div>
                 </div>
 
@@ -142,5 +140,6 @@
 
 </body>
 </html>
+
 
 
