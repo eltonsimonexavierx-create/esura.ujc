@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - ESURA UJC</title>
+    <title>Bem-vindo ao ESURA - UJC</title>
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        
         body { 
             background-color: white; 
             display: flex; 
@@ -16,7 +17,7 @@
             margin: 0; 
         }
         
-        /* ULTRA-FINO: Largura máxima reduzida para 230px */
+        /* CONTAINER ULTRA-FINO */
         .container { 
             width: 230px; 
             display: flex; 
@@ -50,7 +51,10 @@
 
         form { width: 100%; text-align: left; }
         
-        .input-group { margin-bottom: 10px; } 
+        .input-group { 
+            margin-bottom: 10px; 
+            position: relative; /* Necessário para o asterisco não empurrar nada */
+        } 
         
         label { 
             display: block; 
@@ -59,8 +63,15 @@
             margin-bottom: 4px; 
             margin-left: 8px;
         }
+
+        /* O ASTERISCO QUE NÃO ESTRAGA A ORGANIZAÇÃO */
+        .required-mark {
+            color: red;
+            position: absolute;
+            font-weight: bold;
+            margin-left: 2px;
+        }
         
-        /* Inputs super ovais e finos */
         input { 
             width: 100%; 
             padding: 7px 15px; 
@@ -79,7 +90,6 @@
             margin: 8px 0 15px 8px; 
         }
 
-        /* Botão contornado e fino */
         .btn-entrar { 
             width: 100%; 
             padding: 7px; 
@@ -118,16 +128,17 @@
             <!-- FORMULÁRIO -->
             <form method="post">
                 {% csrf_token %}
+                
+                <!-- UTILIZADOR -->
                 <div class="input-group">
                     <label>Utilizador/Email</label>
                     <input type="text" name="username" placeholder="Digite o Utilizador" required>
                 </div>
 
+                <!-- SENHA COM ASTERISCO VERMELHO QUE NÃO MOVE O LAYOUT -->
                 <div class="input-group">
-                    <label>Senha *</label>
-                    <div style="position: relative;">
-                        <input type="password" name="password" placeholder="Digite sua senha" required>
-                    </div>
+                    <label>Senha <span class="required-mark">*</span></label>
+                    <input type="password" name="password" placeholder="Digite sua senha" required>
                 </div>
 
                 <a href="#" class="forgot-password">Esqueceu a senha?</a>
@@ -137,10 +148,9 @@
                 </button>
             </form>
 
-            <div class="version">v 2026.03.12-30431ca</div>
+            <div class="version">v 2026.04.23-UJC-ESURA</div>
         </div>
     </div>
 
 </body>
 </html>
-
