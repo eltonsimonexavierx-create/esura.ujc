@@ -5,42 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - ESURA UJC</title>
-    <style>
-        body { background: white; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: Arial, sans-serif; }
-        .card { width: 260px; border: 1px solid #e5e7eb; border-radius: 30px; padding: 35px 25px; text-align: center; }
-        .logo { width: 140px; margin-bottom: 20px; }
-        .welcome { font-size: 16px; font-weight: bold; margin-bottom: 25px; line-height: 1.2; color: #1f2937; }
-        .group { margin-bottom: 15px; text-align: left; }
-        label { display: block; font-size: 13px; color: #4b5563; margin-bottom: 8px; margin-left: 10px; }
-        .red { color: #ef4444; font-weight: bold; }
-        input { width: 100%; padding: 12px 20px; border: 1px solid #d1d5db; border-radius: 50px; font-size: 13px; outline: none; }
-        .forgot { display: block; font-size: 12px; color: #3b82f6; text-decoration: none; margin: 15px 0 25px 10px; }
-        .btn { width: 100%; padding: 12px; border: 1px solid #3b82f6; background: white; color: #3b82f6; border-radius: 50px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .ver { margin-top: 40px; font-size: 11px; color: #9ca3af; font-family: monospace; }
-    </style>
 </head>
-<body>
-    <div class="card">
-        <img src="{% static 'imagens/UJC.png' %}" class="logo">
-        <div class="welcome">Bem-vindo ao<br>ESURA</div>
-        <form method="post">
+<body style="margin: 0; padding: 0; background-color: #ffffff; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: Arial, sans-serif;">
+
+    <!-- CARD PRINCIPAL: Ajustado para ser ULTRA-FINO e ALTO como na foto -->
+    <div style="width: 260px; border: 1px solid #e5e7eb; border-radius: 30px; padding: 40px 20px; text-align: center; box-sizing: border-box;">
+        
+        <!-- LOGOTIPO: Caminho exato que o seu Git confirmou -->
+        <img src="{% static 'imagens/UJC.png' %}" alt="Logo UJC" style="width: 140px; height: auto; margin-bottom: 15px; display: inline-block;">
+
+        <!-- TEXTO DE BOAS-VINDAS: Dividido em duas linhas como na imagem -->
+        <div style="font-size: 17px; font-weight: bold; color: #1f2937; margin-bottom: 30px; line-height: 1.2;">
+            Bem-vindo ao<br>ESURA
+        </div>
+
+        <!-- FORMULÁRIO -->
+        <form method="post" style="width: 100%; margin: 0; padding: 0;">
             {% csrf_token %}
-            <div class="group">
-                <label>Utilizador/Email</label>
-                <input type="text" name="username" placeholder="Digite o Utilizador" required>
+            
+            <!-- CAMPO UTILIZADOR -->
+            <div style="margin-bottom: 15px; text-align: left;">
+                <label style="display: block; font-size: 13px; color: #6b7280; margin-bottom: 8px; margin-left: 12px;">Utilizador/Email</label>
+                <input type="text" name="username" placeholder="Digite o Utilizador" required 
+                       style="width: 100%; padding: 12px 20px; border: 1px solid #d1d5db; border-radius: 50px; font-size: 13px; outline: none; box-sizing: border-box;">
             </div>
-            <div class="group">
-                <label>Senha <span class="red">*</span></label>
-                <input type="password" name="password" placeholder="Digite sua senha" required>
+
+            <!-- CAMPO SENHA -->
+            <div style="margin-bottom: 10px; text-align: left; position: relative;">
+                <label style="display: block; font-size: 13px; color: #6b7280; margin-bottom: 8px; margin-left: 12px;">
+                    Senha <span style="color: red; font-weight: bold;">*</span>
+                </label>
+                <div style="position: relative;">
+                    <input type="password" name="password" placeholder="Digite sua senha" required 
+                           style="width: 100%; padding: 12px 20px; border: 1px solid #d1d5db; border-radius: 50px; font-size: 13px; outline: none; box-sizing: border-box;">
+                    <span style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 14px; cursor: pointer;">👁️</span>
+                </div>
             </div>
-            <a href="#" class="forgot">Esqueceu a senha?</a>
-            <button type="submit" class="btn"><span>➔</span> Entrar</button>
+
+            <!-- ESQUECEU A SENHA -->
+            <div style="text-align: left; margin-bottom: 25px; margin-left: 12px;">
+                <a href="#" style="font-size: 12px; color: #3b82f6; text-decoration: none;">Esqueceu a senha?</a>
+            </div>
+
+            <!-- BOTÃO ENTRAR: Oval com contorno azul -->
+            <button type="submit" style="width: 100%; padding: 12px; border: 1px solid #3b82f6; background: white; color: #3b82f6; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <span style="font-size: 16px;">➔</span> Entrar
+            </button>
         </form>
-        <div class="ver">v 2026.03.12-30431ca</div>
+
+        <!-- RODAPÉ DA VERSÃO -->
+        <div style="margin-top: 50px; font-size: 11px; color: #9ca3af; font-family: monospace;">
+            v 2026.03.12-30431ca
+        </div>
     </div>
+
 </body>
 </html>
-
-
-
 
