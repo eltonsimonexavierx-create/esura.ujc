@@ -1,0 +1,126 @@
+/* style.css - Design Fiel à Imagem */
+body {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 340px;
+    padding: 40px 25px;
+    border: 1px solid #e8e8e8;
+    border-radius: 25px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.logo-ujc {
+    width: 140px;
+    margin-bottom: 20px;
+}
+
+.text-welcome {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+}
+
+.text-system {
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin: 5px 0 30px 0;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+    margin-left: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #d1d1d1;
+    border-radius: 30px;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline: none;
+    background-color: #fff;
+}
+
+input::placeholder {
+    color: #b5b5b5;
+}
+
+.password-container {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+}
+
+.link-forgot {
+    display: block;
+    text-align: left;
+    color: #0081C9;
+    text-decoration: none;
+    font-size: 13px;
+    margin: 15px 0 30px 10px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background: #ffffff;
+    border: 1.5px solid #0081C9;
+    color: #0081C9;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #f0faff;
+}
+
+.btn-submit::before {
+    content: "→";
+    margin-right: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.version {
+    display: block;
+    margin-top: 45px;
+    color: #aaa;
+    font-size: 12px;
+    font-family: monospace;
+}
