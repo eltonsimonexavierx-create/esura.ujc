@@ -14,77 +14,73 @@
             justify-content: center; 
             min-height: 100vh; 
             margin: 0; 
-            padding: 20px;
+            padding: 10px;
         }
         
         .container { 
-            background: white; 
             width: 100%; 
-            max-width: 400px; /* Largura ideal para telemóveis */
+            max-width: 350px; /* Reduzido de 400px para 350px */
             display: flex; 
             flex-direction: column;
             align-items: center; 
             text-align: center;
         }
 
-        /* Estilo do Card (Borda suave da imagem) */
         .login-card {
             border: 1px solid #e5e7eb;
-            border-radius: 30px;
-            padding: 40px 30px;
+            border-radius: 25px;
+            padding: 25px 20px; /* Reduzi o espaço interno (padding) */
             width: 100%;
         }
 
-        .logo { width: 120px; margin-bottom: 20px; }
+        .logo { width: 100px; margin-bottom: 10px; } /* Logo um pouco menor */
         
         .welcome-text { 
-            font-size: 18px; 
+            font-size: 16px; 
             font-weight: 700; 
             color: #1f2937; 
-            margin-bottom: 5px; 
+            margin-bottom: 2px; 
         }
         
         .sub-text {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: #1f2937;
-            margin-bottom: 30px;
+            margin-bottom: 20px; /* Espaço reduzido abaixo do título */
         }
 
         form { width: 100%; text-align: left; }
         
-        .input-group { margin-bottom: 20px; }
+        .input-group { margin-bottom: 12px; } /* Reduzi o espaço entre campos */
         
         label { 
             display: block; 
-            font-size: 14px; 
+            font-size: 13px; 
             color: #4b5563; 
-            margin-bottom: 8px; 
-            margin-left: 5px;
+            margin-bottom: 4px; 
+            margin-left: 10px;
         }
         
         input { 
             width: 100%; 
-            padding: 12px 20px; 
+            padding: 10px 18px; /* Input mais fino */
             border: 1px solid #d1d5db; 
             border-radius: 25px; 
-            font-size: 14px; 
+            font-size: 13px; 
             outline: none; 
-            color: #6b7280;
         }
 
         .forgot-password { 
             display: block; 
-            font-size: 13px; 
+            font-size: 12px; 
             color: #3b82f6; 
             text-decoration: none; 
-            margin-bottom: 25px; 
-            margin-top: 10px;
+            margin: 10px 0 15px 10px; /* Comprimido */
         }
 
         .btn-entrar { 
             width: 100%; 
-            padding: 12px; 
+            padding: 10px; 
             border: 1px solid #3b82f6; 
             background: white; 
             color: #3b82f6; 
@@ -94,21 +90,15 @@
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            gap: 10px;
-            font-size: 15px;
+            gap: 8px;
+            font-size: 14px;
         }
 
         .version { 
-            margin-top: 40px; 
-            font-size: 12px; 
+            margin-top: 25px; /* Menos espaço no rodapé */
+            font-size: 11px; 
             color: #9ca3af; 
             font-family: monospace; 
-        }
-
-        /* Esconder banner em tablets e telemóveis */
-        @media (max-width: 768px) {
-            body { background-color: white; }
-            .login-card { border: 1px solid #eee; box-shadow: none; }
         }
     </style>
 </head>
@@ -128,14 +118,14 @@
                 {% csrf_token %}
                 <div class="input-group">
                     <label>Utilizador/Email</label>
-                    <input type="text" name="username" placeholder="Digite o Utilizador/Email" required>
+                    <input type="text" name="username" placeholder="Digite o Utilizador" required>
                 </div>
 
                 <div class="input-group">
                     <label>Senha *</label>
                     <div style="position: relative;">
                         <input type="password" name="password" placeholder="Digite sua senha" required>
-                        <span style="position: absolute; right: 15px; top: 12px; color: #999;">👁️</span>
+                        <span style="position: absolute; right: 15px; top: 10px; color: #999; font-size: 12px;">👁️</span>
                     </div>
                 </div>
 
