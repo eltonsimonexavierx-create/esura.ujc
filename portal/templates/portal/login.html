@@ -5,77 +5,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - ESURA UJC</title>
-    <script src="https://tailwindcss.com"></script>
     <style>
-        body { background-color: #f8f9fa; }
-        .login-card { border-radius: 1.5rem; overflow: hidden; }
-        .input-field { border: 1px solid #d1d5db; transition: all 0.3s; }
-        .input-field:focus { border-color: #3b82f6; box-shadow: 0 0 0 1px #3b82f6; }
-        .btn-entrar { border: 1px solid #3b82f6; color: #3b82f6; transition: all 0.3s; }
-        .btn-entrar:hover { background-color: #eff6ff; }
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f0f2f5; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        
+        .container { 
+            background: white; width: 900px; height: 550px; 
+            display: flex; border-radius: 20px; overflow: hidden; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+        }
+
+        /* Lado Esquerdo */
+        .banner { 
+            width: 50%; background-image: url('https://ujc.ac.mz'); 
+            background-size: cover; background-position: center; 
+        }
+
+        /* Lado Direito */
+        .login-section { 
+            width: 50%; padding: 40px; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; position: relative;
+        }
+
+        .logo { width: 85px; margin-bottom: 10px; }
+        .welcome-text { font-size: 15px; font-weight: 700; color: #333; margin-bottom: 25px; }
+
+        form { width: 100%; max-width: 280px; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-size: 11px; color: #888; margin-bottom: 5px; font-weight: 600; }
+        
+        input { 
+            width: 100%; padding: 10px 15px; border: 1px solid #ddd; 
+            border-radius: 10px; font-size: 13px; outline: none; transition: 0.3s;
+        }
+        input:focus { border-color: #3b82f6; }
+
+        .forgot-password { 
+            display: block; font-size: 10px; color: #3b82f6; 
+            text-decoration: none; margin-bottom: 20px; margin-top: 5px;
+        }
+
+        .btn-entrar { 
+            width: 100%; padding: 12px; border: 1px solid #3b82f6; 
+            background: transparent; color: #3b82f6; border-radius: 10px; 
+            font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 13px;
+        }
+        .btn-entrar:hover { background: #f0f7ff; }
+
+        .version { position: absolute; bottom: 20px; font-size: 9px; color: #ccc; font-family: monospace; }
     </style>
 </head>
-<body class="h-screen flex items-center justify-center p-4">
+<body>
 
-    <!-- Contentor Principal (Card) -->
-    <div class="bg-white w-full max-w-5xl h-[580px] shadow-sm flex login-card border border-gray-100">
-        
-        <!-- LADO ESQUERDO: Banner com Imagem de Fundo -->
-        <div class="hidden md:block w-1/2 p-0">
-            <div class="w-full h-full bg-cover bg-center" 
-                 style="background-image: url('https://ujc.ac.mz');">
-                 <!-- Overlay opcional para escurecer a imagem se desejar -->
-                 <div class="w-full h-full bg-black/10"></div>
-            </div>
-        </div>
+    <div class="container">
+        <!-- Lado Esquerdo -->
+        <div class="banner"></div>
 
-        <!-- LADO DIREITO: Formulário de Login -->
-        <div class="w-full md:w-1/2 flex flex-col items-center justify-center px-16 relative">
-            
-            <!-- LOGOTIPO -->
-            <div class="mb-4">
-                <img src="{% static 'imagens/UJC.png' %}" alt="Logo UJC" class="w-24 h-auto">
-            </div>
+        <!-- Lado Direito -->
+        <div class="login-section">
+            <img src="{% static 'imagens/UJC.png' %}" alt="Logo UJC" class="logo">
+            <div class="welcome-text">Bem-vindo ao ESURA</div>
 
-            <!-- TEXTO DE BOAS-VINDAS -->
-            <div class="text-center mb-8">
-                <h1 class="text-sm font-bold text-gray-800">Bem-vindo ao ESURA</h1>
-            </div>
-
-            <!-- FORMULÁRIO -->
-            <form method="post" class="w-full space-y-4">
+            <form method="post">
                 {% csrf_token %}
-                
-                <div>
-                    <label class="block text-[11px] text-gray-500 mb-1 ml-1">Utilizador/Email</label>
-                    <input type="text" name="username" placeholder="Digite o Utilizador/Email" required 
-                           class="w-full px-4 py-2.5 bg-white input-field rounded-lg outline-none text-xs">
+                <div class="input-group">
+                    <label>Utilizador/Email</label>
+                    <input type="text" name="username" placeholder="Digite o Utilizador/Email" required>
                 </div>
 
-                <div>
-                    <label class="block text-[11px] text-gray-500 mb-1 ml-1">Senha *</label>
-                    <input type="password" name="password" placeholder="Digite sua senha" required 
-                           class="w-full px-4 py-2.5 bg-white input-field rounded-lg outline-none text-xs">
+                <div class="input-group">
+                    <label>Senha *</label>
+                    <input type="password" name="password" placeholder="Digite sua senha" required>
                 </div>
 
-                <!-- ESQUECEU A SENHA -->
-                <div class="text-left">
-                    <a href="#" class="text-[10px] text-blue-500 hover:underline">Esqueceu a senha?</a>
-                </div>
+                <a href="#" class="forgot-password">Esqueceu a senha?</a>
 
-                <!-- BOTÃO ENTRAR -->
-                <button type="submit" class="w-full btn-entrar font-medium py-2.5 rounded-lg flex items-center justify-center gap-2 text-xs mt-2">
-                    <span>➔</span> Entrar
-                </button>
+                <button type="submit" class="btn-entrar">➔ Entrar</button>
             </form>
 
-            <!-- RODAPÉ / VERSÃO -->
-            <div class="absolute bottom-6">
-                <p class="text-[9px] text-gray-400 font-mono">v2026.03.12-30431ca</p>
-            </div>
-
+            <div class="version">v2026.03.12-30431ca</div>
         </div>
     </div>
 
 </body>
 </html>
+
