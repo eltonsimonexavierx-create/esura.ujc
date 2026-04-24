@@ -1,18 +1,19 @@
 {
   "version": 2,
-  "installCommand": "bash build.sh",
   "builds": [
     {
-      "src": "setup/wsgi.py",
-      "use": "@vercel/python"
+      "src": "projeto_esura/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "runtime": "python3.9" }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "setup/wsgi.py"
+      "dest": "projeto_esura/wsgi.py"
     }
   ]
 }
+
 
 

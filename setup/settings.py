@@ -31,7 +31,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'setup.urls'
+ROOT_URLCONF = 'projeto_esura.urls'
 
 TEMPLATES = [
     {
@@ -49,7 +49,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'setup.wsgi.application'
+WSGI_APPLICATION = 'projeto_esura.wsgi.application'
 
 DATABASES = {
     'default': {
