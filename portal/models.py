@@ -16,3 +16,4 @@ class Nota(models.Model):
 
     def __str__(self):
         return f"{self.estudante.username} | {self.disciplina.nome}: {self.valor}"
+
